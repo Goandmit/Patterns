@@ -1,0 +1,124 @@
+﻿<Window x:Class="Patterns.AnimalsList"
+        Loaded="AnimalsList_Loaded"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Список животных"
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Создать"                           
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="20,0,0,0"
+                Grid.Row="0"
+                Width="70"
+                Height="25"            
+                Click="Create_Click"/>
+        <Button Content="Удалить"                               
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="100,0,0,0"
+                Width="70"
+                Height="25"
+                Click="Delete_Click"/>
+        <Button Content="txt"                           
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,20,0"
+                Grid.Row="0"
+                Width="60"
+                Height="25"            
+                Click="SaveTxt_Click"/>
+        <Button Content="pdf"                           
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,90,0"
+                Grid.Row="0"
+                Width="60"
+                Height="25"            
+                Click="SavePdf_Click"/>
+        <Button Content="docx"                           
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,160,0"
+                Grid.Row="0"
+                Width="60"
+                Height="25"            
+                Click="SaveWord_Click"/>
+        <TextBlock x:Name="saveStatus"
+                   Text="Сохранить в формате: "
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"                   
+                   Grid.Row="0"
+                   Margin="0,0,230,0"/>
+        <DataGrid x:Name="Animals"
+                  AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="DarkGray"
+                  RowBackground="LightGray"
+                  AlternatingRowBackground="White"
+                  CanUserAddRows="False"
+                  Margin="20,10,20,20"
+                  Grid.Row="1"
+                  MouseDoubleClick="OpenAnimalForm_Click">                              
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding Path=Id}" 
+                                    Width="10*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Класс"
+                                    Binding="{Binding Path=AnimalType}"
+                                    Width="20*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование"
+                                    Binding="{Binding Path=Name}"
+                                    Width="35*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Тип питания"
+                                    Binding="{Binding Path=FoodType}"
+                                    Width="15*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Среда обитания"
+                                    Binding="{Binding Path=LivingEnvironment}"
+                                    Width="20*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
